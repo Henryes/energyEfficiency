@@ -146,14 +146,14 @@ export default {
       radio2: false,
       tableData: [
         {
-          date: "汇电专栏",
+          date: "无线专栏",
           name: "88",
           address: "显示",
           zip: "/",
           time: "/"
         },
         {
-          date: "汇电日报",
+          date: "无线日报",
           name: "7",
           address: "隐藏",
           zip: "0",

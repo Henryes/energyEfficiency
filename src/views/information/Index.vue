@@ -187,7 +187,7 @@ export default {
         {
           date: "1",
           name: "新增测试",
-          address: "汇电专栏",
+          address: "无线专栏",
           zip: "2019-12-04 14:32:37",
           time: "2019-12-04 14:32:37",
           weight: "0",

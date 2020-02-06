@@ -17,13 +17,13 @@
         <el-input v-model="ruleForm.name" placeholder="新增测试"></el-input>
       </el-form-item>
       <el-form-item label="所属栏目" prop="region">
-        <el-select v-model="ruleForm.region" placeholder="汇电专栏">
+        <el-select v-model="ruleForm.region" placeholder="无线专栏">
           <el-option label="区域一" value="shanghai"></el-option>
           <el-option label="区域二" value="beijing"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="来源" prop="source">
-        <el-input v-model="ruleForm.source" placeholder="汇电云联"></el-input>
+        <el-input v-model="ruleForm.source" placeholder="无线云联"></el-input>
       </el-form-item>
       <el-form-item label="发布时间" required>
         <el-form-item prop="date1">
