@@ -91,7 +91,7 @@ export default {
       menus: [
         {
           path: "/homepage",
-          label: "首页"
+          label: "电力用户 最大需量"
         },
         {
           path: "/information",
@@ -317,6 +317,7 @@ export default {
 }
 .el-button {
   background-color: #06ca9e;
+  margin: 3px;
 }
 
 .breadcrumb {

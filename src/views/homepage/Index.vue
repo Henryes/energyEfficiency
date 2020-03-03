@@ -427,6 +427,7 @@ export default {
 <style lang="scss" scoped>
 .el-button {
   background-color: #06ca9e;
+  margin: 3px;
 }
 
 .breadcrumb {
