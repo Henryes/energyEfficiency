@@ -624,8 +624,8 @@ export default {
 }
 
 .canvas {
-  height: 650px;
-  width: 100%;
+  height: 640px;
+  width: auto;
 }
 
 .chart {

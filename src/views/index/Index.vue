@@ -1,35 +1,41 @@
 <template>
-  <el-container class="outer-container">  
-    <el-aside width="200px">
-      <div style="float:center" class="avatar-wrapper"></div>
+  <el-container class="outer-container">
+    <el-aside class="avatar-wrapper" width="200px">
+      <div class="img-text">能效管理系统</div>
+      <hr align="center" width="300" color="#454c68" size="1" />
       <img
         src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
         class="user-avatar"
       />
       <el-menu
+        style="text-indent:-2.5em"
         default-active="/homepage"
         text-color="white"
+        text-align="center"
         :router="true"
         background-color="rgb(48, 65, 86)"
       >
-        <template
-          v-for="(menu, index) in menus">
-
+        <template v-for="(menu, index) in menus">
           <el-menu-item
             :index="menu.path"
             :key="index"
             v-if="menu.children === undefined"
-            >{{ menu.label }}
+          >
+            <!-- <i style="color:#06ca9e" class="el-icon-edit"></i>-->{{ menu.label }} 
           </el-menu-item>
 
-          <el-submenu 
-            :index="menu.path"
-            :key="index"
-            v-else>
+          <el-submenu :index="menu.path" :key="index" v-else>
             <template slot="title">
+              <i style="color:#06ca9e; " class="el-icon-edit"></i>
               {{ menu.label }}
             </template>
-            <el-menu-item :index="menu.path + menu2.path" v-for="menu2 of menu.children" :key="menu2.path">
+            <el-menu-item
+              style="text-indent:-0.5em"
+              :index="menu.path + menu2.path"
+              v-for="menu2 of menu.children"
+              :key="menu2.path"
+            >
+              <i style="color:#06ca9e; " class="el-icon-phone-outline"></i>
               {{ menu2.label }}
             </el-menu-item>
           </el-submenu>
@@ -58,13 +64,13 @@
           <div style="float:left">
             <i class="el-icon-user-solid"></i>
           </div>
-          <div class="admin" style="float:left" >用户：admin</div>
+          <div class="admin" style="float:left">用户：admin</div>
           <div style="float:left" class="size">
             <div style="float:left">
               <i class="el-icon-s-flag"></i>
             </div>
           </div>
-          <div class="admin" style="float:left" >角色：超级管理</div>
+          <div class="admin" style="float:left">角色：超级管理</div>
           <div style="float:left" class="avatar-wrapper">
             <el-button size="small" background-color="#06ca9e"
               >修改密码</el-button
@@ -74,13 +80,13 @@
         </div>
       </el-header>
       <el-main>
-       <router-view></router-view>
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
-<script>
+<script type="text/javascript">
 import echarts from "echarts";
 
 export default {
@@ -91,73 +97,79 @@ export default {
       menus: [
         {
           path: "/homepage",
-          label: "电力用户 最大需量"
+          label: "首页",
         },
         {
           path: "/information",
           label: "资讯管理",
           children: [
             {
-              path: "/article-column",
-              label: "文章栏目"
+              path: "/test",
+              label: "测试",
             },
             {
-              path: '/article-list',
-              label: '文章列表'
+              path: "/article-column",
+              label: "文章栏目",
+              className: "el-icon-location",
+            },
+            {
+              path: "/article-list",
+              label: "文章列表",
             },
             {
               path: "/finger",
-              label: "行业信息"
-            }
-          ]
+              label: "行业信息",
+            },
+          ],
         },
         {
           path: "/file",
-          label: "金融管理"
+          class: "el-icon-edit",
+          label: "金融管理",
         },
         {
           path: "/system",
-          label: "增值服务"
+          label: "增值服务",
         },
         {
           path: "/file",
-          label: "能效管理"
+          label: "能效管理",
         },
         {
           path: "/system",
-          label: "资讯管理"
+          label: "资讯管理",
         },
         {
           path: "/file",
-          label: "反馈管理"
+          label: "反馈管理",
         },
         {
           path: "/system",
-          label: "系统管理"
-        }
+          label: "系统管理",
+        },
       ],
       search: "",
       tableData: [
         {
           date: "2016-05-02",
           name: "23189",
-          address: "广州白云"
+          address: "广州白云",
         },
         {
           date: "2016-05-04",
           name: "12341",
-          address: "广州花都"
+          address: "广州花都",
         },
         {
           date: "2016-05-01",
           name: "213",
-          address: "广州荔湾"
+          address: "广州荔湾",
         },
         {
           date: "2016-05-03",
           name: "124556",
-          address: "广州南沙"
-        }
+          address: "广州南沙",
+        },
       ],
       pickerOptions: {
         shortcuts: [
@@ -168,7 +180,7 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
               picker.$emit("pick", [start, end]);
-            }
+            },
           },
           {
             text: "最近一个月",
@@ -177,7 +189,7 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
               picker.$emit("pick", [start, end]);
-            }
+            },
           },
           {
             text: "最近三个月",
@@ -186,17 +198,20 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
               picker.$emit("pick", [start, end]);
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       value1: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
       value2: "",
-      currentPage4: 4
+      currentPage4: 4,
     };
   },
+  created() {
+    // this.init()
+  },
   // mounted() {
-    // alert("mouted");
+  // alert("mouted");
   //   this.initChart();
   // },
   // beforeMount() {
@@ -209,24 +224,74 @@ export default {
   //   // alert("beforeCreate");
   // },
   methods: {
+    init() {},
     initChart() {
       let canvas = echarts.init(this.$refs.canvas);
       const options = {
         title: {
-          text: ""
+          text: "",
         },
         tooltip: {},
         xAxis: {
-          data: ["1:00", "2:00", "3:00", "4:00", "5:00","6:00","7:00","8:00", "9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00"]
+          data: [
+            "1:00",
+            "2:00",
+            "3:00",
+            "4:00",
+            "5:00",
+            "6:00",
+            "7:00",
+            "8:00",
+            "9:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00",
+            "17:00",
+            "18:00",
+            "19:00",
+            "20:00",
+            "21:00",
+            "22:00",
+            "23:00",
+            "24:00",
+          ],
         },
         yAxis: {},
         series: [
           {
             name: "销量",
             type: "line",
-            data: [380, 440, 180, 410, 380, 658,546,524,453,485,427,278,388,392, 658,546,524,453,485,427,278,388,392,]
-          }
-        ]
+            data: [
+              380,
+              440,
+              180,
+              410,
+              380,
+              658,
+              546,
+              524,
+              453,
+              485,
+              427,
+              278,
+              388,
+              392,
+              658,
+              546,
+              524,
+              453,
+              485,
+              427,
+              278,
+              388,
+              392,
+            ],
+          },
+        ],
       };
       canvas.setOption(options);
       // var startX = 100;
@@ -303,18 +368,29 @@ export default {
     },
     handleCurrentChange(val) {
       alert(`当前页: ${val}`);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .el-container {
   height: 100vh;
+
   .el-aside {
     background-color: rgb(48, 65, 86);
+    overflow: hidden;
+  }
+
+  .avatar-wrapper {
+    text-align: center;
+  }
+  .img-text {
+    color: #08aa8b;
+    padding: 10px;
   }
 }
+
 .el-button {
   background-color: #06ca9e;
   margin: 3px;
@@ -402,6 +478,7 @@ export default {
   }
   .user-avatar {
     padding: 5px 12px;
+    text-align: center;
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -430,9 +507,9 @@ export default {
     color: #06ca9e;
   }
   .admin {
-    width:130px;
+    width: 130px;
     height: 10px;
-    float: right
+    float: right;
   }
 }
 
@@ -523,11 +600,11 @@ export default {
 .chart {
   margin: 23px 0 48px 0;
 }
-.chartleft{
+.chartleft {
   padding: 10px;
 }
-.el-button-group{
-  padding: 10px
+.el-button-group {
+  padding: 10px;
 }
 .block {
   height: 67px;

@@ -27,6 +27,10 @@ export const routes = [
     component: () => import("@/views/index/Index.vue"),
     children: [
       {
+        path: "test",
+        component: () => import("@/views/test/Index.vue")
+      },
+      {
         path: "article-column",
         component: () => import("@/views/articleColumn/Index.vue")
       },
